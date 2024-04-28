@@ -71,29 +71,32 @@ drawBranch = level => {
    //for loop to make 2 more segments on each branch below
    for (let i = 0; i < branches; i++){
       //to make each branch to split into 2 small segments
-   //first segment
-   //add save and restore here so that the following transform 
-   //only affect the drawBranch(level+1)
-   ctx.save()
-   //translates rotation's centre point along the branch
-   //place next segment from x position of its parent branch
-   //size - (size/branch) * 1 so that the child branch grows
-   //from the end point of of its parent branch 
-   ctx.translate(size - (size / branches) * i , 0) 
-   ctx.rotate(spread)
-   ctx.scale(scale, scale)
-   drawBranch(level + 1)
-   ctx.restore();
+      //first segment
+      //add save and restore here so that the following transform 
+      //only affect the drawBranch(level+1)
+      ctx.save()
 
-   //second segment
-   ctx.save()
-   ctx.translate(size - (size / branches) * i, 0) 
+      //translates rotation's centre point along the branch
+      //place next segment from x position of its parent branch
+      //size - (size/branch) * 1 so that the child branch grows
+      //from the end point of of its parent branch 
+      ctx.translate(size - (size / branches) * i , 0) 
 
-   //negative so that the segment is on the other side of parent branch
-   ctx.rotate(-spread)
-   ctx.scale(scale, scale)
-   drawBranch(level + 1)
-   ctx.restore()
+      ctx.rotate(spread)
+      ctx.scale(scale, scale)
+      drawBranch(level + 1)
+      ctx.restore();
+
+      //second segment
+      ctx.save()
+      ctx.translate(size - (size / branches) * i, 0) 
+
+      //negative so that the segment is on the other side of parent branch
+      ctx.rotate(-spread)
+      
+      ctx.scale(scale, scale)
+      drawBranch(level + 1)
+      ctx.restore()
 
    }
 
