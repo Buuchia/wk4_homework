@@ -3,8 +3,6 @@ document.body.style.overflow = `hidden`
 document.body.style.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 30%)'
 
 const cnv = this.document.getElementById('canvas1')
-// cnv.width = cnv.parentNode.scrollWidth;
-// cnv.height = cnv.width * 9 / 16;
 
 cnv.width = window.innerWidth
 cnv.height = window.innerHeight
@@ -93,7 +91,7 @@ drawBranch = level => {
 
       //negative so that the segment is on the other side of parent branch
       ctx.rotate(-spread)
-      
+
       ctx.scale(scale, scale)
       drawBranch(level + 1)
       ctx.restore()
